@@ -9,8 +9,8 @@ namespace Business.Abstract
     public interface ICarService
     {
         IDataResult<List<Car>> GetAll();
-        IDataResult<List<Car>> GetAllByBrandId();
-        IDataResult<List<Car>> GetByDailyPrice();
-        IDataResult<List<Car>> GetModelYear();
+        IDataResult<List<Car>> GetCarByBrandId(int id);
+        IDataResult<List<Car>> GetByDailyPrice(decimal dailyPrice);
+        IDataResult<List<Car>> GetModelYear(int modelYear);
     }
 }
