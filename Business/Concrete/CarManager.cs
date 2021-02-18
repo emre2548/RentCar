@@ -21,11 +21,35 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.DailyPrice < 0)
+            if (car.Description.Length > 1 && car.DailyPrice > 0)
             {
-                return new ErrorResult(Message.CarInvalidDailyPrice);
+                _carDal.Add(car);
+                return new SuccessResult(Message.CarAdded);
             }
-            return new SuccessResult(Message.CarAdded);
+            else
+            {
+                if (car.Description.Length < 2)
+                {
+                    return new ErrorResult(Message.CarNameInvalid);
+                }
+                if (car.DailyPrice < 1)
+                {
+                    return new ErrorResult(Message.CarNameInvalid);
+                }
+                return new Result(false);
+            }
+        }
+
+        public IResult Delete(Car car)
+        {
+            _carDal.Delete(car);
+            return new SuccessResult(Message.CarDeleted);
+        }
+
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult(Message.CarUpdate);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -40,7 +64,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetByDailyPrice(decimal dailyPrice)
         {
-            return new SuccessDataResult<List<Car>(_carDal.GetAll(p => p.DailyPrice == dailyPrice));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice == dailyPrice));
         }
 
         public IDataResult<List<Car>> GetModelYear(int modelYear)
