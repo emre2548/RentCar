@@ -3,6 +3,7 @@ using Business.Constant;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -70,6 +71,10 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetModelYear(int modelYear)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ModelYear == modelYear));
+        }
+        public IDataResult<List<CarDetailDTO>> GetCarDetails()
+        {
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails());
         }
     }
 }
