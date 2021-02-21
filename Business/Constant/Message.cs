@@ -37,5 +37,8 @@ namespace Business.Constant
         public static string UserUpdated { get; internal set; }
         public static string UserListed { get; internal set; }
         public static string UserListedById { get; internal set; }
+        public static string RentalListed { get; internal set; }
+        public static string RentalListedById { get; internal set; }
+        public static string RentalListedWithDetails { get; internal set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,5 +15,7 @@ namespace Business.Abstract
 
         IDataResult<List<Rental>> GetAllRentals();
         IDataResult<Rental> GetRentalById(int id);
+
+        IDataResult<List<RentalDetailDTO>> GetRentalsDetail();
     }
 }
