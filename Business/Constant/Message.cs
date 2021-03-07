@@ -40,5 +40,10 @@ namespace Business.Constant
         public static string RentalListed { get; internal set; }
         public static string RentalListedById { get; internal set; }
         public static string RentalListedWithDetails { get; internal set; }
+        public static string AddedCarImageSucces { get; internal set; }
+        public static string DeletedCarImageSucces { get; internal set; }
+        public static string UpdatedCarImageSucces { get; internal set; }
+        public static string CarImageLimitExceeded { get; internal set; }
+        public static string CarImageAdded { get; internal set; }
     }
 }
