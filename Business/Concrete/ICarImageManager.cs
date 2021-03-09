@@ -64,8 +64,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
         }
 
-        public IResult Update(CarImage carImage)
+        public IResult Update(IFormFile file ,CarImage carImage)
         {
+            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
+            carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult(Message.UpdatedCarImageSucces);
         }
